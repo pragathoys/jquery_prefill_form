@@ -1,7 +1,7 @@
 # jquery_prefill_form
 JQuery Code for Creating and using Presets of Data to automatically fill input fields
 
-#S TEP 1 : Create Data Sets
+#STEP 1 : Create Data Sets
          
 the structure is as follows:
 
