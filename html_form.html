@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script>
+        $( document ).ready(function() {
+
+
+          // ---  STEP 1 : Create Data Sets
+          /* the structure is as follows:
+          * dataFills["data_selection_id"] = { field_id: "value", field_id: "value"}
+          *
+          * The data_selection_id should be unique , it is used in the DropDown SELECT component
+          *
+          * The field_id is the DOM ID of each INPUT field
+          *
+          */
+          var dataPresets = {};
+
+          dataPresets["data1"] = {
+            field1: "Text 1",
+            field2: "Text 2",
+            field3: "Text 3"
+            }; 
+
+          dataPresets["data2"] = {
+            field1: "Text 1 - 2",
+            field2: "Text 2 - 2",
+            field3: "Text 3 - 2",
+            field4: "Text 4 - 2"
+            }; 
+
+          dataPresets["data3"] = {
+            field4: "Text 4 - 3",
+            field5: "Text 5 - 3"
+            };   
+
+          dataPresets["data4"] = {
+            field1: "Text 1 - 4",
+            field2: "Text 2 - 4",
+            field3: "Text 3 - 4",
+            field4: "Text 4 - 4",
+            field5: "Text 5 - 4"
+            };   
+
+          //-------------------------------
+
+          // ---  STEP 2 : Handle the onChange event of the dropdown selection
+          $('#prefill').on('change',function(){
+              var data_selection_id = $( this ).val();
+              if( data_selection_id !="-"){
+                var data = dataPresets[data_selection_id];
+                for (const field_id in data) {
+                  $( "#" + field_id ).val( data[field_id] );
+                }        
+              }
+          });
+          //-------------------------------
+        });  
+  </script>
+</head>
+<body>
+  
+  <form id="frmMain">
+    <div style="margin-bottom:10px;">
+      <label for="field1">Prefill values with:</label>
+      <select id="prefill">
+        <option value="-">-</option>
+        <option value="data1">Preset 1 for fields: 1,2,3 </option>
+        <option value="data2">Preset 2 for fields: 1,2,3,4  </option>
+        <option value="data3">Preset 3 for fields: 4 & 5  </option>
+        <option value="data4">Preset 4 for all the fields</option>
+      </select>
+    </div>  
+    <div>
+      <label for="field1">Field 1</label>
+      <input id="field1" type="text" />
+    </div>
+    <div>
+      <label for="field2">Field 2</label>
+      <input id="field2" type="text" />
+    </div>
+    <div>
+      <label for="field3">Field 3</label>
+      <input id="field3" type="text" />
+    </div>
+    <div>
+      <label for="field4">Field 4</label>
+      <input id="field4" type="text" />
+    </div>
+    <div>
+      <label for="field5">Field 5</label>
+      <input id="field5" type="text" />
+    </div>  
+  </form>  
+  
+</body>
+</html>
